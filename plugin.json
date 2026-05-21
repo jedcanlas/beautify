@@ -1,0 +1,12 @@
+{
+  "name": "beautify",
+  "description": "Frontend design methodology for distinctive, production-grade UI — derived from frontend-design, evolved locally",
+  "version": "0.1.0",
+  "author": {
+    "name": "jed",
+    "email": "jed@stratus.finance"
+  },
+  "homepage": "https://github.com/jedcanlas/beautify",
+  "repository": "https://github.com/jedcanlas/beautify",
+  "license": "MIT"
+}
