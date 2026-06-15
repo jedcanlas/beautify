@@ -96,6 +96,37 @@ Beyond the generic-aesthetic warning above, these specific patterns are instant 
 
 ---
 
+## Critique Pass
+
+Before declaring a design done, critique it against established usability standards — not just "does it look good." Run two lenses.
+
+**Nielsen's 10 heuristics** — score each 0–4 (0 = absent, 4 = genuinely excellent) and fix anything ≤2:
+
+1. **Visibility of system status** — timely feedback; loading, confirmation, progress, active location, inline validation.
+2. **Match between system and real world** — user's language, no unexplained jargon, logical order, familiar metaphors.
+3. **User control and freedom** — undo, cancel, clear escape from any state; no traps.
+4. **Consistency and standards** — one term per concept, platform conventions, repeated patterns behave the same.
+5. **Error prevention** — make mistakes hard before relying on error messages; confirm only the truly destructive.
+6. **Recognition over recall** — show options; don't make users remember things across steps.
+7. **Flexibility and efficiency** — shortcuts and accelerators for experts without blocking novices.
+8. **Aesthetic and minimalist design** — every element earns its place; no decorative noise that competes with content.
+9. **Help users recover from errors** — plain-language errors that say what / why / how to fix (no codes alone).
+10. **Help and documentation** — discoverable, task-focused help where it's needed.
+
+**Persona walkthrough** — pick the 2–3 personas most relevant to the interface, walk the primary task as each, and report *specific* red flags (name the element that breaks), not generic concerns:
+
+- **Alex (impatient power user)** — skips onboarding, wants keyboard shortcuts and bulk actions. Red flags: forced tutorials, no keyboard path, one-at-a-time workflows, redundant confirmations.
+- **Jordan (confused first-timer)** — needs guidance, takes labels literally, abandons rather than puzzle it out. Red flags: icon-only nav, jargon, no visible help, ambiguous next step, no success confirmation.
+- **Sam (accessibility-dependent)** — screen reader + keyboard only, may zoom to 200%. Red flags: click-only interactions, missing/invisible focus, meaning by color alone, unlabeled fields, broken SR flow.
+- **Riley (deliberate stress tester)** — pushes edge cases, weird input, refresh mid-flow. Red flags: silent failures, broken error recovery, useless empty states, data lost on refresh, inconsistent behavior.
+- **Casey (distracted mobile user)** — one thumb, interrupted, slow connection. Red flags: primary actions out of the thumb zone, no state persistence, typing where selection would do, tiny/crowded tap targets.
+
+Persona selection by interface type: landing/marketing → Jordan, Riley, Casey · dashboard/admin → Alex, Sam · checkout → Casey, Riley, Jordan · onboarding → Jordan, Casey · analytics → Alex, Sam · forms/wizards → Jordan, Sam, Casey.
+
+Also keep cognitive load low — humans hold ~4 things in working memory: ≤5 top-level nav items, ≤4 fields per form group, one primary action plus at most one or two secondary.
+
+---
+
 ## Visual Verification with Browsify
 
 After implementing any UI change, always verify visually:

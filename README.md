@@ -10,21 +10,25 @@ Derived from the [frontend-design](https://github.com/anthropics/claude-code-plu
 
 ## Installation
 
-Vendored automatically by jedi:
+### As a standalone Claude Code plugin (recommended)
+
+beautify is a self-contained plugin (`plugin.json` + `skills/` + `.claude-plugin/marketplace.json`), installable the same way as any other:
+
+```bash
+claude plugin marketplace add jedcanlas/beautify
+claude plugin install beautify@beautify
+```
+
+The skill then activates as `/beautify:using-beautify` (and auto-loads when you build any UI). Run `claude plugin update beautify` to refresh.
+
+### Vendored by jedi
 
 ```bash
 jedi init      # installs beautify into .jedi/tools/beautify/
 jedi update    # refreshes beautify from this repo
 ```
 
-## Usage
-
-Once vendored, the jedi Frontend Designer agent reads beautify methodology automatically. To replace the `frontend-design` Claude Code plugin with beautify in your Claude Code session, add beautify as a local skill:
-
-```bash
-# In Claude Code settings, add the skill path:
-# E:/PROJECTS/beautify/skills/
-```
+Once vendored, the jedi Frontend Designer agent reads beautify methodology automatically.
 
 ## Development
 

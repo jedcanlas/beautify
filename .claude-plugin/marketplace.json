@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "beautify",
+  "description": "Frontend design methodology for distinctive, production-grade UI",
+  "owner": {
+    "name": "jed",
+    "email": "jed@stratus.finance"
+  },
+  "plugins": [
+    {
+      "name": "beautify",
+      "description": "Distinctive, production-grade frontend design methodology — concrete rules, anti-pattern catalog, and a Nielsen + persona critique pass",
+      "source": "./",
+      "category": "development"
+    }
+  ]
+}
