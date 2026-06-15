@@ -1,0 +1,18 @@
+beautify
+Copyright (c) jed
+
+This product includes design methodology distilled from:
+
+  impeccable (https://github.com/pbakaus/impeccable)
+  Copyright (c) Paul Bakaus
+  Licensed under the Apache License, Version 2.0
+  http://www.apache.org/licenses/LICENSE-2.0
+
+The "Concrete Design Rules" and "Anti-Patterns — the AI Tells" sections of
+skills/using-beautify/SKILL.md paraphrase concrete design principles (spacing,
+typography, color, motion, interaction-state, copy, and anti-pattern rules)
+documented in impeccable's reference material. No source code from impeccable
+is included.
+
+Core design-thinking and aesthetics prose is derived from the frontend-design
+Claude Code plugin by Anthropic.
