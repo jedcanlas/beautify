@@ -2,7 +2,7 @@
 
 Frontend design methodology for jedi — produces distinctive, production-grade UI.
 
-Derived from the [frontend-design](https://github.com/anthropics/claude-code-plugins) Claude Code plugin, evolved locally for personal use. The "Concrete Design Rules" and "Anti-Patterns" sections distill principles from [pbakaus/impeccable](https://github.com/pbakaus/impeccable) (Apache-2.0) — see [NOTICE](NOTICE).
+Derived from the [frontend-design](https://github.com/anthropics/claude-code-plugins) Claude Code plugin, evolved locally for personal use. Much of the methodology — direction-setting, concrete design rules, intensity calibration, the anti-pattern catalog, the production craft bar, the performance floor, and the Nielsen + persona critique pass — distills principles from [pbakaus/impeccable](https://github.com/pbakaus/impeccable) (Apache-2.0) — see [NOTICE](NOTICE).
 
 ## What it provides
 

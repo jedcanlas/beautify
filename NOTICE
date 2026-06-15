@@ -8,9 +8,12 @@ This product includes design methodology distilled from:
   Licensed under the Apache License, Version 2.0
   http://www.apache.org/licenses/LICENSE-2.0
 
-The "Concrete Design Rules" and "Anti-Patterns — the AI Tells" sections of
-skills/using-beautify/SKILL.md paraphrase concrete design principles (spacing,
-typography, color, motion, interaction-state, copy, and anti-pattern rules)
+Substantial portions of skills/using-beautify/SKILL.md — the "Committing to a
+Direction", "Concrete Design Rules", "Calibrating Intensity", "Anti-Patterns",
+"Production Craft Bar", "Performance Floor", and "Critique Pass" sections —
+paraphrase concrete design principles (direction/brand strategy, spacing,
+typography, color, motion, interaction states, copy, anti-patterns, production
+hardening, performance budgets, and Nielsen/persona usability evaluation)
 documented in impeccable's reference material. No source code from impeccable
 is included.
 

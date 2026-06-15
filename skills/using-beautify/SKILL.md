@@ -25,6 +25,18 @@ Then implement working code (HTML/CSS/JS, React, Vue, etc.) that is:
 - Cohesive with a clear aesthetic point-of-view
 - Meticulously refined in every detail
 
+## Committing to a Direction
+
+Design Thinking picks the *what*; this is how you lock a direction concrete enough to execute and distinct enough to dodge the defaults.
+
+- **Name the voice in three physical words.** Before choosing fonts or color, write three concrete, sensory adjectives — "warm, mechanical, opinionated" or "calm, clinical, careful" — never "modern" or "elegant." Check every later choice against these three.
+- **Write a scene sentence.** One line of physical context: who uses this, where, under what light, in what mood. It should force the light/dark decision on its own — if it doesn't, add detail until it does.
+- **Anchor to real references, not adjectives.** "Klim Type Foundry orange drench" beats "bold orange." Name actual products, type foundries, or brands you're steering toward.
+- **Pick one color strategy per surface:** *Restrained* (a single saturated color, used sparingly — the restraint is the voice), *Committed* (a secondary color carrying ~30%), *Full palette* (a bold multi-color distribution), or *Drenched* (one dominant color owns 60%+ and is the brand). Don't drift between them on one screen.
+- **Avoid the second-order reflex lane.** Beyond reflex *fonts*, the whole *editorial-typographic* lane — display serif (often italic) + tiny mono labels + ruled separators + monochrome restraint — is where most AI-adjacent brands now land. Unless the brief literally calls for magazine aesthetics, that's the trained default; look further.
+- **Ship imagery when the brief implies it.** A restaurant, hotel, travel, food, or fashion design with zero images is a bug, not minimalism. Use real or generated photography, SVG, or a credible canvas/WebGL scene — never substitute flat colored CSS panels for photographic content.
+- **Reveal complexity progressively.** Show what's needed now; place the rest behind clear entry points (accordions, steps, modals). Don't dump every option at once.
+
 ## Frontend Aesthetics Guidelines
 
 Focus on:
@@ -82,6 +94,26 @@ The guidelines above set the vision; these rules set the floor. Aesthetic direct
 - Prefer skeleton screens over spinners.
 - Errors follow what / why / how-to-fix ("Email isn't valid — it needs an @. Try name@example.com"). Buttons are verb + object ("Create account", "Save changes") — never "OK", "Submit", or "Yes/No".
 
+## Calibrating Intensity
+
+A design can miss by being too timid or too loud. Adjust deliberately — and note "bolder/quieter" means different things on a *brand* surface (marketing, identity) than a *product* surface (tools, dashboards).
+
+**To push a bland design bolder**
+- *Brand*: real typographic risk, extreme scale, a committed point of view. *Product*: stronger hierarchy and weight contrast, one sharper accent, more deliberate density — not theatrics.
+- Jump type scale 3–5× between hero and surroundings (not 1.5×); pair extreme weights (900 with 200, not 600 with 400).
+- Let one color own ~60%, raise saturation, add sharp high-contrast accents and tinted neutrals, intentional multi-stop gradients.
+- Break the grid: asymmetry, overlap for depth, 70/30 or 80/20 splits, diagonal flow, full-bleed elements, 100–200px gaps.
+- One signature entrance, shown once — not scroll-fade-rise on every section (the saturated default). Avoid glassmorphism.
+
+**To calm a loud, noisy design**
+- *Brand*: restrained palette, more whitespace, typographic air — drama down, POV intact. *Product*: fewer accents, flatter cards, less color and motion until the tool disappears into the task.
+- Drop saturation to ~70–85%, move to a neutral-dominant palette with a ~10% accent, lighten weights (900→600, 700→500), thin or remove borders.
+- Shorten motion distances (10–20px, not 40px), gentler ease-out, and cut any animation not serving a clear purpose.
+
+**Ambitious, "technically extraordinary" effects** — reach for these when the context rewards it: View Transitions API (morph list→detail), `@starting-style`, scroll-driven animations (`animation-timeline: scroll()`), spring physics, `@property` for animatable gradients, WebGL/WebGPU/Canvas, virtual scrolling, OffscreenCanvas/Web Workers, WASM. Guardrails: target 60fps (floor 50), lazy-init and pause off-screen work, **always** honor `prefers-reduced-motion` with a beautiful static fallback, no sound without explicit opt-in, and degrade gracefully (progressive enhancement).
+
+**Delight, tastefully** — *brand* surfaces can spread personality across copy, transitions, and discovery rewards; *product* surfaces earn delight only at specific moments (completion, first run, error recovery, milestones) — everywhere else it reads as noise. Keep each moment under ~1s, skippable, and varied (not the same animation every time). Confetti is for real milestones, not every click. Loading copy must be product-specific ("Crunching your latest numbers…", "Syncing your team's changes…") — never the AI-slop clichés ("Herding pixels", "Teaching robots to dance").
+
 ## Anti-Patterns — the AI Tells
 
 Beyond the generic-aesthetic warning above, these specific patterns are instant "an AI made this" giveaways. Treat each as a smell to remove, not a default to reach for:
@@ -93,6 +125,34 @@ Beyond the generic-aesthetic warning above, these specific patterns are instant 
 - **Nested cards** — cards inside cards. Use spacing and dividers instead.
 - **Monotonous spacing** — the same gap everywhere. See the rhythm rule above.
 - **Reflex font choices** — Inter, Space Grotesk, DM Sans/Serif, Plus Jakarta, Outfit, IBM Plex, Fraunces, Newsreader, Lora. If one of these was your first instinct, look further.
+
+---
+
+## Production Craft Bar
+
+"Done" means production-grade, not a happy-path mockup. Before shipping, clear this bar:
+
+- **Real content, not placeholders.** No lorem ipsum, no "Card Title", no fake avatars where real data belongs.
+- **Every state exists:** default, empty (with a clear next action), loading (name what's loading), error (recoverable), plus success where relevant.
+- **Edge cases handled:** zero items, one item, 1000+ items, very long strings, emoji, RTL text, network failure, permission denied, slow connection.
+- **Internationalization-ready:** budget 30–40% extra width for translation (German runs ~30% longer); let flex/grid grow with content instead of fixing text-container widths. Use logical CSS properties (`margin-inline-start`, `padding-inline`, `border-inline-end`) so RTL works for free. Format dates, numbers, and currency with `Intl.*`, and pluralize via a real i18n library — not `count !== 1`.
+- **API failures map to UI:** 400 → field validation, 401 → login, 403 → permission message, 404 → not-found state, 429 → rate-limit message, 500 → generic error + a way to get help.
+- **Semantic HTML first:** real headings (h1–h6) and landmarks, labels associated to inputs, buttons vs links used correctly, accessible names, and live regions to announce dynamic changes — before any ARIA patching.
+- **Large datasets** use pagination or virtual scrolling with search/filter — never render 10,000 rows at once.
+
+---
+
+## Performance Floor
+
+Craft includes speed. Hold these unless a deliberate trade-off says otherwise:
+
+- **Core Web Vitals:** LCP < 2.5s (optimize the hero, inline critical CSS, preload key assets), INP < 200ms (break up long tasks, defer non-critical JS, offload heavy work to Web Workers), CLS < 0.1 (set image/video dimensions or `aspect-ratio`, reserve space for embeds, never inject content above existing).
+- **Images:** modern formats (WebP/AVIF), sized to display (don't ship a 3000px image into a 300px slot), `srcset`+`sizes` for responsive delivery, lazy-load below the fold, ~80–85% quality, via CDN.
+- **Breakpoints are content-driven:** start narrow, widen until the layout breaks, add a breakpoint there (usually ~640/768/1024 suffice). Prefer `clamp()` for fluid type/space, and write mobile-first (`min-width` queries layering complexity up).
+- **Adapt to input and device:** `@media (pointer: coarse)` / `(hover: none)` for touch (larger targets, no hover-only affordances); respect notches with `env(safe-area-inset-*)` plus `viewport-fit=cover`.
+- **Avoid layout thrash:** batch DOM reads, then batch writes — never alternate read/write in a loop. Use `content-visibility: auto` for long lists and `will-change` sparingly.
+- **Fonts:** `font-display: swap`, subset with `unicode-range`, preload critical faces, limit weights.
+- **Verify on real conditions:** measure on a low-end Android throttled to 3G, not just desktop Chrome — that's where the problems actually show.
 
 ---
 
